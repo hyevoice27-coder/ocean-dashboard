@@ -1,6 +1,7 @@
-/* 오션이의 하루 — 오프라인에서도 열리도록 앱 껍데기만 담아 둬요. */
-var CACHE = 'ocean-hari-v2';
-var SHELL = ['./', 'index.html', 'manifest.json', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png'];
+/* 오션이의 하루 — 오프라인에서도 열리도록 앱 껍데기와 알림 음성을 담아 둬요. */
+var CACHE = 'ocean-hari-v3';
+var SHELL = ['./', 'index.html', 'manifest.json', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png',
+  'audio/alarm-0800.mp3', 'audio/alarm-0815.mp3'];
 
 self.addEventListener('install', function (e) {
   e.waitUntil(
@@ -42,7 +43,7 @@ self.addEventListener('fetch', function (e) {
     return;
   }
 
-  /* 그림·manifest 는 저장해 둔 것을 먼저 (빠르고 오프라인에서도 보임) */
+  /* 그림·음성·manifest 는 저장해 둔 것을 먼저 (빠르고 오프라인에서도 들려요) */
   e.respondWith(
     caches.match(req).then(function (hit) {
       if (hit) return hit;
