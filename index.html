@@ -2526,7 +2526,8 @@ button{font:inherit;color:inherit;cursor:pointer}
     var sub = $('dictSub');
     if (sub) {
       sub.textContent = dict.mode === 'quiz'
-        ? '이번 주 맞춤법 문제 ' + quizzes.length + '개 · 다 풀면 칭찬 스티커 +1'
+        ? '이번 주 맞춤법 문제 ' + quizzes.length + '개 중 ' + (quizzes.length > 10 ? 10 : quizzes.length) +
+          '개씩 풀어요 · 다 풀면 칭찬 스티커 +1'
         : '낱말 ' + quizzes.length + '개 · 문장 ' + sents.length + '개를 보고 읽으며 공부해요';
     }
 
@@ -2750,6 +2751,12 @@ button{font:inherit;color:inherit;cursor:pointer}
     }
     if (!out.length) { toast('문장을 한 개 이상 적어 주세요'); return; }
     state.dictation.sentences = out.slice(0, 12);
+    /* 문장이 바뀌면 예전 문장의 '공부했어요' 체크는 지워요 (번호가 어긋나지 않게) */
+    var keep = {}, pre = (state.dictation.preset || 'custom') + '|s|';
+    for (var k in state.dictation.studied) {
+      if (Object.prototype.hasOwnProperty.call(state.dictation.studied, k) && k.indexOf(pre) !== 0) keep[k] = true;
+    }
+    state.dictation.studied = keep;
     save();
     renderAll();
     sound('chime');
