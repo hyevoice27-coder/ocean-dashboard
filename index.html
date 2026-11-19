@@ -567,6 +567,105 @@ button{font:inherit;color:inherit;cursor:pointer}
   *{animation-duration:.001ms !important;transition-duration:.001ms !important}
 }
 
+/* ---------- dictation ---------- */
+.dict-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.dict-head h2{font-size:20px;font-weight:800;letter-spacing:-.03em}
+.dict-head p{margin-top:2px}
+.dict-edit{margin-top:12px;border-color:#F3E4C0;background:linear-gradient(150deg,#fff,#FFFDF4)}
+.dict-edit h3{font-size:15px;font-weight:800;letter-spacing:-.02em}
+.dict-edit textarea{
+  width:100%;margin-top:10px;font:inherit;font-size:15px;line-height:1.75;color:#413E38;
+  border:1.5px solid #EFE4D0;border-radius:16px;padding:14px;background:#FFFDF8;resize:vertical;
+}
+.dict-edit textarea:focus{outline:none;border-color:#FFD24D;background:#fff;box-shadow:0 0 0 3px rgba(255,210,77,.22)}
+
+.seg{display:flex;background:#F6F1E6;border-radius:999px;padding:4px;gap:3px;margin:14px auto 12px;width:100%;max-width:460px;justify-content:center}
+.seg-btn{border:0;background:transparent;border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:800;color:#8C8275;transition:.16s;flex:1;white-space:nowrap}
+.seg-btn:hover{color:#5E5344}
+.seg-btn.active{background:#fff;color:#3D3A34;box-shadow:0 3px 10px -4px rgba(170,130,80,.45)}
+
+.preset-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:14px 0 0}
+.preset-chip{
+  border:1.5px solid #EFE4D0;background:#FFFDF8;border-radius:999px;padding:9px 16px;
+  font-size:12.5px;font-weight:800;color:#8C8275;transition:.16s;
+}
+.preset-chip:hover{border-color:#F0DDB6;background:#FFF8E4;color:#A07C25;transform:translateY(-1px)}
+.preset-chip.active{background:#FFD24D;border-color:#FFC93C;color:#5B4514;box-shadow:0 6px 14px -10px rgba(226,178,40,1)}
+.preset-chip.custom{background:#F1ECFB;border-color:#E0D4F5;color:#6B57A8;cursor:default}
+
+.dict-card{max-width:820px;margin:0 auto 12px;padding:18px 20px}
+.dlist-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.dlist-head h3{font-size:15.5px;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.dlist{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.ditem{
+  display:flex;align-items:flex-start;gap:10px;padding:12px 14px;
+  border:1.5px solid #F1E8D9;border-radius:16px;background:#FFFDF8;transition:.16s;
+}
+.ditem.done{background:#F3FBF5;border-color:#B9E3C6}
+.dno{
+  flex:none;width:26px;height:26px;border-radius:9px;background:#FFF3CE;color:#A07C25;
+  font-size:12.5px;font-weight:800;display:grid;place-items:center;font-variant-numeric:tabular-nums;
+}
+.ditem.done .dno{background:#DFF3E5;color:#3F8A5C}
+.dmain{flex:1;min-width:0}
+.dtext{font-size:16.5px;font-weight:700;line-height:1.55;letter-spacing:-.01em;word-break:keep-all;color:#413E38}
+.dword{color:#8A6A1E;background:#FFF3CE;border-radius:6px;padding:0 5px;font-weight:900}
+.dopts{margin-top:4px;font-size:12.5px;font-weight:800;color:#A79D90;letter-spacing:-.01em}
+.dtip{margin-top:3px;font-size:12px;font-weight:600;color:#A79D90;line-height:1.5;word-break:keep-all}
+.dcheck{
+  flex:none;border:1.5px solid #E7DCC6;background:#fff;border-radius:999px;
+  padding:7px 12px;font-size:11.5px;font-weight:800;color:#A79D90;transition:.16s;white-space:nowrap;
+}
+.dcheck:hover{border-color:#BFE3CB;background:#F3FBF5;color:#3F8A5C}
+.ditem.done .dcheck{background:#6FC48F;border-color:#6FC48F;color:#fff}
+
+.dict-progress{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.qcount{font-size:13px;font-weight:800;color:#8C8275;font-variant-numeric:tabular-nums}
+.qdots{display:flex;gap:5px;flex-wrap:wrap}
+.qdot{width:9px;height:9px;border-radius:50%;background:#EFE6D6;transition:.2s}
+.qdot.now{background:#FFD24D;box-shadow:0 0 0 3px rgba(255,210,77,.25)}
+.qdot.ok{background:#6FC48F}
+.qdot.no{background:#F18A8A}
+.quiz-prompt{word-break:keep-all;font-size:22px;font-weight:800;text-align:center;letter-spacing:-.02em;line-height:1.55;padding:16px 8px 6px}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+@media (max-width:420px){.quiz-options{grid-template-columns:1fr}}
+.quiz-opt{
+  border:2px solid #EFE4D0;background:#FFFDF8;border-radius:18px;padding:20px 10px;
+  font-size:20px;font-weight:800;color:#413E38;transition:.15s;letter-spacing:-.01em;
+}
+.quiz-opt:hover{border-color:#FFD24D;background:#FFFBEF;transform:translateY(-1px)}
+.quiz-opt.good{border-color:#6FC48F;background:#F1FBF4;color:#2F8154}
+.quiz-opt.bad{border-color:#F2A097;background:#FFF3F0;color:#C4604E}
+.quiz-opt[disabled]{cursor:default}
+.quiz-tip{margin-top:13px;font-size:13px;color:#8C8275;font-weight:700;text-align:center;line-height:1.5}
+.quiz-hint{text-align:center;font-size:12px;font-weight:700;color:#B3A896;margin-top:14px}
+.btn.big{width:100%;padding:15px;font-size:16px;margin-top:12px;border-radius:18px}
+.blank{
+  display:inline-block;min-width:72px;text-align:center;color:#C79A34;background:#FFF8E4;
+  border-bottom:3px dashed #E6BC60;border-radius:7px 7px 0 0;padding:0 10px;line-height:1.16;font-weight:900;
+}
+.edit-sep{border:0;border-top:1px dashed #EDE2CE;margin:20px 0 16px}
+.paste-eg{
+  margin-top:8px;font-size:12px;font-weight:700;color:#A07C25;background:#FFF8E4;
+  border:1px dashed #F0DCA8;border-radius:12px;padding:9px 12px;line-height:1.5;word-break:break-all;
+}
+.result-card{text-align:center;padding:30px 22px}
+.result-emoji{font-size:48px;line-height:1.1}
+.result-score{font-size:34px;font-weight:800;letter-spacing:-.03em;margin:8px 0 2px}
+.result-sub{font-size:13.5px;color:#8C8275;font-weight:700}
+.result-reward{
+  display:inline-flex;align-items:center;gap:7px;margin-top:14px;background:#FFF6DE;border:1px solid #F6E7BE;
+  border-radius:999px;padding:9px 16px;font-size:13px;font-weight:800;color:#A07C25;
+}
+.result-actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+@media (max-width:760px){
+  .dict-card{padding:16px}
+  .quiz-prompt{font-size:20px}
+  .dtext{font-size:15.5px}
+  .ditem{flex-wrap:wrap}
+  .dcheck{margin-left:36px}
+}
+
 @media (max-width:760px){
   .tab{font-size:12px;padding:7px 10px}
   .tab .ico{font-size:13px}
@@ -671,6 +770,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     <nav class="tabs" id="tabs" aria-label="화면 고르기">
       <button class="tab active" data-action="tab" data-view="today"><span class="ico">☀️</span>오늘</button>
       <button class="tab" data-action="tab" data-view="homework"><span class="ico">📚</span>숙제 &amp; 닌텐도</button>
+      <button class="tab" data-action="tab" data-view="dictation"><span class="ico">📝</span>받아쓰기</button>
       <button class="tab" data-action="tab" data-view="letters"><span class="ico">💌</span>편지함<span class="dot" id="letterDot" hidden></span></button>
       <button class="tab" data-action="tab" data-view="dex"><span class="ico">⭐</span>모험·도감</button>
       <button class="tab" data-action="tab" data-view="settings"><span class="ico">⚙️</span>부모 설정</button>
@@ -820,6 +920,39 @@ button{font:inherit;color:inherit;cursor:pointer}
       <span class="head-sub">5개면 토요일, 8개면 일요일 닌텐도 오픈!</span>
     </div>
     <div class="hw-grid" id="weeklyGrid"></div>
+  </section>
+
+  <!-- ================= DICTATION ================= -->
+  <section class="view" id="view-dictation">
+    <div class="card dict-head">
+      <div>
+        <h2>📝 받아쓰기</h2>
+        <p class="muted small" id="dictSub">이번 주 낱말·문장을 보고 공부해요</p>
+      </div>
+      <button class="btn" data-action="dict-edit">✏️ 문제 편집</button>
+    </div>
+
+    <div class="card dict-edit" id="dictEdit" hidden>
+      <h3>📋 새 문제 붙여넣기 (엄마용)</h3>
+      <p class="muted small">한 줄에 한 문제씩 <b>문장 | 보기1 | 보기2 | 정답번호 | 한줄설명</b> 순서로 붙여넣고 <b>적용하기</b>를 누르면 문제가 바로 바뀌어요.</p>
+      <p class="paste-eg">예) 감기가 얼른 ( ___ ) 좋겠어 | 나았으면 | 낳았으면 | 1 | 병이 좋아질 때는 '낫다'</p>
+      <textarea id="dictPasteText" rows="6" spellcheck="false" placeholder="감기가 얼른 ( ___ ) 좋겠어 | 나았으면 | 낳았으면 | 1 | 병이 좋아질 때는 '낫다'"></textarea>
+      <div class="btn-row">
+        <button class="btn primary" data-action="dict-paste">적용하기</button>
+        <button class="btn" data-action="dict-cancel">닫기</button>
+      </div>
+
+      <hr class="edit-sep">
+
+      <h3>📝 읽어 볼 문장</h3>
+      <p class="muted small">한 줄에 한 문장씩 적어 주세요. (최대 12개) 목록에 번호와 함께 보여요.</p>
+      <textarea id="dictEditText" rows="5" spellcheck="false" placeholder="친구가 맛있는 사과를 주었어요."></textarea>
+      <div class="btn-row">
+        <button class="btn" data-action="dict-save">문장 저장</button>
+      </div>
+    </div>
+
+    <div id="dictBody"></div>
   </section>
 
   <!-- ================= LETTERS ================= -->
@@ -1142,6 +1275,121 @@ button{font:inherit;color:inherit;cursor:pointer}
     { id: 'arceus', no: '100', name: '아르세우스', dexId: 493, type: '노말', kind: 'special', color: '#D6AEA1', accent: '#F8EDE7', shape: 'round', ears: 'none', tail: 'curly', cheeks: false }
   ];
 
+  var DICT_DEFAULT = [
+    '친구가 맛있는 사과를 주었어요.',
+    '날씨가 맑아서 소풍을 갔어요.',
+    '고양이가 조용히 잠을 자요.',
+    '피카츄와 함께 모험을 떠나요.',
+    '오늘 숙제를 모두 끝냈어요.',
+    '엄마와 함께 도서관에 갔어요.'
+  ];
+
+  var QUIZ_DEFAULT = [
+    { prompt: '약속 시간은 ( ___ ) 지켜야 해요.',
+      opts: ['반드시', '반듯이'], answer: 0,
+      tip: '"틀림없이 꼭"은 "반드시", 바르게 놓을 때는 "반듯이"예요.' },
+    { prompt: '화분에 꽃이 잘 자라도록 ( ___ )을 주었어요.',
+      opts: ['거름', '걸음'], answer: 0,
+      tip: '식물에 주는 영양분은 "거름", 발을 옮기는 건 "걸음"이에요.' },
+    { prompt: '동생이 무거워서 엄마가 ( ___ ) 주셨어요.',
+      opts: ['업어', '엎어'], answer: 0,
+      tip: '사람을 등에 지는 건 "업다", 뒤집는 건 "엎다"예요.' },
+    { prompt: '감기가 빨리 ( ___ ) 좋겠어요.',
+      opts: ['나았으면', '낳았으면'], answer: 0,
+      tip: '병이 좋아지는 건 "낫다", 새끼나 알을 내놓는 건 "낳다"예요.' },
+    { prompt: '친구들과 ( ___ ) 도서관에 갔어요.',
+      opts: ['같이', '가치'], answer: 0,
+      tip: '여럿이 함께는 "같이", 사물의 쓸모는 "가치"예요.' },
+    { prompt: '과녁의 한가운데를 정확하게 ( ___ ).',
+      opts: ['맞혔어요', '맞췄어요'], answer: 0,
+      tip: '정답이나 과녁을 적중시키는 건 "맞히다", 서로 끼우는 건 "맞추다"예요.' },
+    { prompt: '오래 서 있었더니 다리가 ( ___ ).',
+      opts: ['저려요', '절여요'], answer: 0,
+      tip: '감각이 둔하고 찌릿한 건 "저리다", 소금물에 간이 배게 하는 건 "절이다"예요.' },
+    { prompt: '친구의 생일 카드를 우편으로 ( ___ ).',
+      opts: ['부쳤어요', '붙였어요'], answer: 0,
+      tip: '편지나 물건을 보내는 건 "부치다", 떨어지지 않게 하는 건 "붙이다"예요.' },
+    { prompt: '선생님께 두 손으로 선물을 ( ___ ).',
+      opts: ['바쳤어요', '받쳤어요'], answer: 0,
+      tip: '정중하게 드리는 건 "바치다", 아래에 대어 떠받는 건 "받치다"예요.' },
+    { prompt: '선생님께서 수학 푸는 방법을 ( ___ ) 주셨어요.',
+      opts: ['가르쳐', '가리켜'], answer: 0,
+      tip: '지식이나 방법을 알려 주는 건 "가르치다", 손가락으로 짚어 보이는 건 "가리키다"예요.' },
+    { prompt: '지우개를 오래 썼더니 반이나 ( ___ ).',
+      opts: ['닳았어요', '닿았어요'], answer: 0,
+      tip: '오래 써서 줄어드는 건 "닳다", 다른 것과 맞붙는 건 "닿다"예요.' },
+    { prompt: '추우니까 이불을 꼭 ( ___ ) 자자.',
+      opts: ['덮고', '덥고'], answer: 0,
+      tip: '위에 씌우는 건 "덮다", 기온이 높아 뜨거운 건 "덥다"예요.' },
+    { prompt: '책을 소리 내어 또박또박 ( ___ ).',
+      opts: ['읽었어요', '익었어요'], answer: 0,
+      tip: '글을 보고 뜻을 아는 건 "읽다", 열을 받아 먹을 수 있게 되는 건 "익다"예요.' },
+    { prompt: '강아지가 낯선 사람을 보고 크게 ( ___ ).',
+      opts: ['짖어요', '짓어요'], answer: 0,
+      tip: '개가 소리를 내는 건 "짖다", 집 등을 만드는 건 "짓다"예요.' },
+    { prompt: '끈을 풀리지 않게 단단히 ( ___ ).',
+      opts: ['묶었어요', '묵었어요'], answer: 0,
+      tip: '끈으로 매는 건 "묶다", 머물러 지내는 건 "묵다"예요.' },
+    { prompt: '장미 꽃이 피기 전 ( ___ )가 맺혔어요.',
+      opts: ['봉오리', '봉우리'], answer: 0,
+      tip: '아직 피지 않은 꽃은 "봉오리", 산의 가장 높은 부분은 "봉우리"예요.' },
+    { prompt: '사과 껍질을 예쁘게 ( ___ ) 먹었어요.',
+      opts: ['깎아서', '갉아서'], answer: 0,
+      tip: '겉을 얇게 벗겨 내는 건 "깎다", 이나 날로 조금씩 깎는 건 "갉다"예요.' },
+    { prompt: '뜨거운 국물에 손을 살짝 ( ___ ).',
+      opts: ['데었어요', '대었어요'], answer: 0,
+      tip: '뜨거운 것에 다치는 건 "데다", 닿게 하는 건 "대다"예요.' },
+    { prompt: '옷이 낡아서 팔꿈치 부분이 ( ___ ).',
+      opts: ['해어졌어요', '헤어졌어요'], answer: 0,
+      tip: '닳아서 얇아지거나 찢어지는 건 "해어지다", 함께 있다가 따로 가는 건 "헤어지다"예요.' },
+    { prompt: '수도꼭지에서 물이 똑똑 ( ___ ).',
+      opts: ['새요', '세요'], answer: 0,
+      tip: '틈으로 빠져나가는 건 "새다", 수를 헤아리거나 힘이 강한 건 "세다"예요.' },
+  ];
+
+  var G6_SENTENCES = [
+    '책으로 읽으니 재미있었어요.',
+    '땅에 묻혀 있는 보물을 찾았어요.',
+    '물을 계속 튼 채로 나왔어요.',
+    '오늘 기분이 어땠니?',
+    '중요한 곳에 밑줄을 긋고 읽었어요.',
+    '학교에서 선생님을 만났습니다.',
+    '손을 깨끗이 씻었습니다.',
+    '등산하기 딱 좋다고 했어요.',
+    '밝은 표정으로 인사했어요.',
+    '글과 그림을 활용해 발표했어요.'
+  ];
+
+  var G6_QUIZ = [
+    { prompt: '책으로 ( ___ ) 재미있었어요.', opts: ['읽으니', '익으니'], answer: 0,
+      tip: '글을 보고 뜻을 아는 건 "읽다", 열을 받아 무르익는 건 "익다"예요.' },
+    { prompt: '땅에 ( ___ ) 있는 보물을 찾았어요.', opts: ['묻혀', '무쳐'], answer: 0,
+      tip: '땅에 덮여 있는 건 "묻히다", 나물에 양념을 버무리는 건 "무치다"예요.' },
+    { prompt: '물을 계속 튼 ( ___ ) 나왔어요.', opts: ['채로', '체로'], answer: 0,
+      tip: '어떤 상태가 그대로 이어질 때는 "채로"예요.' },
+    { prompt: '오늘 기분이 ( ___ )?', opts: ['어땠니', '어땟니'], answer: 0,
+      tip: '"어떠하다"가 줄어든 말이라 "어땠니"로 써요.' },
+    { prompt: '중요한 곳에 밑줄을 ( ___ ) 읽었어요.', opts: ['긋고', '그꼬'], answer: 0,
+      tip: '줄을 그을 때는 "긋다", 그래서 "긋고"예요.' },
+    { prompt: '학교에서 선생님을 ( ___ ).', opts: ['만났습니다', '만낫습니다'], answer: 0,
+      tip: '받침이 있는 "났"으로 써요. "만낫습니다"는 틀린 말이에요.' },
+    { prompt: '손을 ( ___ ) 씻었습니다.', opts: ['깨끗이', '깨끗히'], answer: 0,
+      tip: '"깨끗이"처럼 "-이"로 끝나는 말이에요.' },
+    { prompt: '등산하기 딱 ( ___ )?', opts: ['좋다고', '조타고'], answer: 0,
+      tip: '소리는 "조타고"처럼 나도 "좋다고"로 써요.' },
+    { prompt: '( ___ ) 표정으로 인사했어요.', opts: ['밝은', '박은'], answer: 0,
+      tip: '환하고 밝은 모습은 "밝은"이에요.' },
+    { prompt: '글과 그림을 ( ___ ) 발표했어요.', opts: ['활용해', '화룡해'], answer: 0,
+      tip: '잘 써먹는 건 "활용"이에요. "화룡"이 아니에요.' }
+  ];
+
+  var PRESETS = [
+    { id: 'words',  label: '📘 헷갈리는 낱말 1~60', short: '헷갈리는 낱말',
+      sentences: DICT_DEFAULT, quizzes: QUIZ_DEFAULT },
+    { id: 'grade6', label: '📙 [6급] 매체를 경험해요', short: '[6급] 매체를 경험해요',
+      sentences: G6_SENTENCES, quizzes: G6_QUIZ }
+  ];
+
   /* ---------------- state ---------------- */
 
   function today() { return new Date(); }
@@ -1203,6 +1451,7 @@ button{font:inherit;color:inherit;cursor:pointer}
         read: false,
         text: '오션아, 오늘도 엄마가 응원해!\n아침 준비 척척 하고 학교 잘 다녀와.\n저녁에 맛있는 거 먹자! ❤️'
       }],
+      dictation: { preset: 'words', sentences: DICT_DEFAULT.slice(), quizzes: cloneQuizzes(QUIZ_DEFAULT), studied: {} },
       settings: {
         morning: '08:30',
         deadlineDay: '5',
@@ -1236,7 +1485,12 @@ button{font:inherit;color:inherit;cursor:pointer}
     if (typeof state.dailyMigrated !== 'boolean') state.dailyMigrated = false;
     migrateLegacyDaily();
     if (!state.history) state.history = {};
-    if (state.dictation) delete state.dictation;   /* 없앤 받아쓰기 기록은 정리 */
+    /* 받아쓰기: 예전 저장값이 있으면 살리고, 빠진 칸은 기본값으로 채워요 */
+    if (!state.dictation || typeof state.dictation !== 'object') state.dictation = d.dictation;
+    if (!state.dictation.preset) state.dictation.preset = 'words';
+    if (!state.dictation.sentences || !state.dictation.sentences.length) state.dictation.sentences = DICT_DEFAULT.slice();
+    if (!state.dictation.quizzes || !state.dictation.quizzes.length) state.dictation.quizzes = cloneQuizzes(QUIZ_DEFAULT);
+    if (!state.dictation.studied || typeof state.dictation.studied !== 'object') state.dictation.studied = {};
     state.settings.goal = parseInt(state.settings.goal, 10) || 30;
     state.settings.deadlineDay = String(state.settings.deadlineDay);
     if (!/^\d{2}:\d{2}$/.test(state.settings.morning)) state.settings.morning = '08:30';
@@ -2166,6 +2420,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     renderWeekly();
     renderLetters();
     renderDex();
+    renderDictation();
     renderSound();
     var now = today();
     renderClock(now);
@@ -2188,6 +2443,353 @@ button{font:inherit;color:inherit;cursor:pointer}
     } else {
       el.innerHTML = '<b>' + label + '</b>까지 · ' + fmtDur(dl.getTime() - now.getTime()) + ' 남음';
     }
+  }
+
+  /* ---------------- 받아쓰기 ----------------
+     학교 학습지의 낱말·문장을 번호와 함께 보면서 공부하는 '목록'과,
+     시험과 같은 방식의 '문장 속 빈칸 맞춤법 고르기'만 있어요.
+     '듣고 써보기'(음성으로 듣고 타이핑해서 채점하기)는 빼 달라고 하셔서 넣지 않았어요. */
+
+  var dict = {
+    mode: 'list',
+    editing: false,
+    quiz: [], qi: 0, pick: null, qresults: [], qfinished: false, qrewarded: false
+  };
+
+  function cloneQuizzes(list) {
+    var out = [];
+    for (var i = 0; i < list.length; i++) {
+      out.push({ prompt: list[i].prompt, opts: [list[i].opts[0], list[i].opts[1]],
+        answer: list[i].answer, tip: list[i].tip || '' });
+    }
+    return out;
+  }
+
+  function dictKey(kind, i) {
+    return (state.dictation.preset || 'custom') + '|' + kind + '|' + i;
+  }
+
+  function dictStudied(kind, i) {
+    return !!(state.dictation.studied && state.dictation.studied[dictKey(kind, i)]);
+  }
+
+  function studiedCount(kind, total) {
+    var n = 0;
+    for (var i = 0; i < total; i++) if (dictStudied(kind, i)) n++;
+    return n;
+  }
+
+  function dotRow(total, now, results, done) {
+    var out = '';
+    for (var i = 0; i < total; i++) {
+      var cls = 'qdot';
+      if (results[i]) cls += results[i].ok ? ' ok' : ' no';
+      if (!done && i === now) cls += ' now';
+      out += '<span class="' + cls + '"></span>';
+    }
+    return out;
+  }
+
+  /* 빈칸에 정답 낱말을 노랗게 채워 넣어요 (아이가 보고 읽으며 공부) */
+  function filledHtml(prompt, word) {
+    return esc(prompt)
+      .replace(/\(?\s*_{2,}\s*\)?/g, '<b class="dword">' + esc(word) + '</b>')
+      .replace(/\s+([.?!,])/g, '$1');
+  }
+
+  function applyPreset(id) {
+    var pr = null;
+    for (var i = 0; i < PRESETS.length; i++) { if (PRESETS[i].id === id) pr = PRESETS[i]; }
+    if (!pr) return;
+    state.dictation.preset = id;
+    state.dictation.sentences = pr.sentences.slice();
+    state.dictation.quizzes = cloneQuizzes(pr.quizzes);
+    state.dictation.studied = {};
+    dict.quiz = [];
+    startQuiz();
+    save();
+    renderAll();
+    sound('chime');
+    toast(pr.label + ' 로 바꿨어요!');
+  }
+
+  function renderDictation() {
+    var body = $('dictBody');
+    if (!body) return;
+    var edit = $('dictEdit');
+    if (edit) edit.hidden = !dict.editing;
+
+    var sents = state.dictation.sentences || [];
+    var quizzes = state.dictation.quizzes || [];
+    if (dict.mode === 'quiz' && !dict.quiz.length && quizzes.length) startQuiz();
+
+    var sub = $('dictSub');
+    if (sub) {
+      sub.textContent = dict.mode === 'quiz'
+        ? '이번 주 맞춤법 문제 ' + quizzes.length + '개 · 다 풀면 칭찬 스티커 +1'
+        : '낱말 ' + quizzes.length + '개 · 문장 ' + sents.length + '개를 보고 읽으며 공부해요';
+    }
+
+    var ph = '<div class="preset-row">';
+    for (var pi = 0; pi < PRESETS.length; pi++) {
+      var pr = PRESETS[pi];
+      ph += '<button class="preset-chip' + (state.dictation.preset === pr.id ? ' active' : '') +
+        '" data-action="dict-preset" data-preset="' + pr.id + '">' + pr.label + '</button>';
+    }
+    if (state.dictation.preset === 'custom') ph += '<span class="preset-chip custom">✏️ 내가 넣은 문제</span>';
+    ph += '</div>';
+
+    var h = ph + '<div class="seg">' +
+      '<button class="seg-btn' + (dict.mode === 'list' ? ' active' : '') + '" data-action="dict-mode" data-mode="list">📖 보고 공부하기</button>' +
+      '<button class="seg-btn' + (dict.mode === 'quiz' ? ' active' : '') + '" data-action="dict-mode" data-mode="quiz">🎯 맞춤법 고르기</button>' +
+      '</div>';
+    h += dict.mode === 'quiz' ? quizHtml() : listHtml();
+    body.innerHTML = h;
+  }
+
+  function swapDictMode(mode) {
+    if (mode !== 'list' && mode !== 'quiz') return;
+    if (mode === dict.mode) return;
+    dict.mode = mode;
+    if (mode === 'quiz') { dict.quiz = []; startQuiz(); }
+    sound('soft');
+    renderDictation();
+  }
+
+  function listItemHtml(kind, i, idx, textHtml, subLine, tip) {
+    var on = dictStudied(kind, i);
+    return '<div class="ditem' + (on ? ' done' : '') + '">' +
+      '<span class="dno">' + idx + '</span>' +
+      '<div class="dmain">' +
+        '<p class="dtext">' + textHtml + '</p>' +
+        (subLine ? '<p class="dopts">' + subLine + '</p>' : '') +
+        (tip ? '<p class="dtip">' + tip + '</p>' : '') +
+      '</div>' +
+      '<button class="dcheck" data-action="dict-study" data-kind="' + kind + '" data-i="' + i + '"' +
+      ' aria-pressed="' + (on ? 'true' : 'false') + '">' + (on ? '✓ 공부했어요' : '공부했어요') + '</button>' +
+      '</div>';
+  }
+
+  function listHtml() {
+    var quizzes = state.dictation.quizzes || [];
+    var sents = state.dictation.sentences || [];
+    if (!quizzes.length && !sents.length) {
+      return '<div class="card dict-card result-card"><div class="result-emoji">📋</div>' +
+        '<div class="result-sub">아직 문제가 없어요.<br><b>문제 편집</b>에서 이번 주 학습지를 붙여넣어 주세요.</div>' +
+        '<div class="result-actions"><button class="btn primary" data-action="dict-edit">문제 편집</button></div></div>';
+    }
+    var h = '';
+    if (quizzes.length) {
+      h += '<div class="card dict-card"><div class="dlist-head">' +
+        '<h3>📘 헷갈리는 낱말 <span class="count" id="dictWordCount">' + studiedCount('w', quizzes.length) + '/' + quizzes.length + '</span></h3>' +
+        '<span class="head-sub">빈칸에 들어갈 낱말을 노랗게 표시했어요</span></div>' +
+        '<div class="dlist">';
+      for (var i = 0; i < quizzes.length; i++) {
+        var q = quizzes[i];
+        var ans = q.opts[q.answer] || q.opts[0];
+        h += listItemHtml('w', i, i + 1,
+          filledHtml(q.prompt, ans),
+          esc(q.opts[0]) + ' / ' + esc(q.opts[1]),
+          esc(q.tip || ''));
+      }
+      h += '</div></div>';
+    }
+    if (sents.length) {
+      h += '<div class="card dict-card"><div class="dlist-head">' +
+        '<h3>📝 읽어 볼 문장 <span class="count" id="dictSentCount">' + studiedCount('s', sents.length) + '/' + sents.length + '</span></h3>' +
+        '<span class="head-sub">소리 내어 또박또박 읽어 보세요</span></div>' +
+        '<div class="dlist">';
+      for (var j = 0; j < sents.length; j++) {
+        h += listItemHtml('s', j, j + 1, esc(sents[j]), '', '');
+      }
+      h += '</div></div>';
+    }
+    return h;
+  }
+
+  function toggleStudied(kind, i) {
+    var k = dictKey(kind, i);
+    if (state.dictation.studied[k]) delete state.dictation.studied[k];
+    else state.dictation.studied[k] = true;
+    sound(state.dictation.studied[k] ? 'pop' : 'soft');
+    save();
+    renderDictation();
+  }
+
+  function startQuiz() {
+    var pool = (state.dictation.quizzes || []).slice();
+    var i, j, t;
+    for (i = pool.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      t = pool[i]; pool[i] = pool[j]; pool[j] = t;
+    }
+    pool = pool.slice(0, pool.length > 10 ? 10 : pool.length);
+    var out = [];
+    for (i = 0; i < pool.length; i++) {
+      var q = pool[i];
+      var opts = [q.opts[0], q.opts[1]];
+      if (Math.random() < 0.5) { t = opts[0]; opts[0] = opts[1]; opts[1] = t; }
+      out.push({
+        prompt: q.prompt,
+        opts: opts,
+        answerText: q.opts[q.answer] || q.opts[0],
+        tip: q.tip || ''
+      });
+    }
+    dict.quiz = out;
+    dict.qi = 0; dict.pick = null; dict.qresults = []; dict.qfinished = false; dict.qrewarded = false;
+  }
+
+  function promptHtml(txt) {
+    return esc(txt)
+      .replace(/\(?\s*_{2,}\s*\)?/g, '<span class="blank">?</span>')
+      .replace(/\s+([.?!,])/g, '$1');
+  }
+
+  function quizHtml() {
+    var quizzes = state.dictation.quizzes || [];
+    if (!quizzes.length) {
+      return '<div class="card dict-card result-card"><div class="result-emoji">📋</div>' +
+        '<div class="result-sub">아직 문제가 없어요.<br><b>문제 편집</b>에서 새 문제를 붙여넣어 주세요.</div>' +
+        '<div class="result-actions"><button class="btn primary" data-action="dict-edit">문제 편집</button></div></div>';
+    }
+    var total = dict.quiz.length;
+    if (dict.qfinished) {
+      var okc = 0;
+      for (var i = 0; i < dict.qresults.length; i++) { if (dict.qresults[i] && dict.qresults[i].ok) okc++; }
+      return '<div class="card dict-card result-card">' +
+        '<div class="result-emoji">' + (okc === total ? '🏆' : '🌟') + '</div>' +
+        '<div class="result-score">' + okc + ' / ' + total + '</div>' +
+        '<div class="result-sub">' + (okc === total ? '모두 맞혔어요! 정말 대단해요!' : '끝까지 해냈어요! 한 번 더 해 볼까요?') + '</div>' +
+        '<div class="result-reward">⭐ 칭찬 스티커 +1 받았어요</div>' +
+        '<div class="result-actions">' +
+        '<button class="btn primary" data-action="quiz-restart">한 번 더</button>' +
+        '<button class="btn" data-action="dict-edit">문제 편집</button></div></div>';
+    }
+    var item = dict.quiz[dict.qi];
+    var answered = dict.pick !== null;
+    var h = '<div class="card dict-card">' +
+      '<div class="dict-progress"><span class="qcount">' + (dict.qi + 1) + ' / ' + total + '번 문제</span>' +
+      '<span class="qdots">' + dotRow(total, dict.qi, dict.qresults, false) + '</span></div>' +
+      '<div class="quiz-prompt">' + promptHtml(item.prompt) + '</div>' +
+      '<div class="quiz-options">';
+    for (var k = 0; k < item.opts.length; k++) {
+      var cls = 'quiz-opt';
+      if (answered) {
+        if (item.opts[k] === item.answerText) cls += ' good';
+        else if (k === dict.pick) cls += ' bad';
+      }
+      h += '<button class="' + cls + '" data-action="quiz-answer" data-opt="' + k + '"' +
+        (answered ? ' disabled' : '') + '>' + esc(item.opts[k]) + '</button>';
+    }
+    h += '</div>';
+    if (!answered) {
+      h += '<div class="quiz-hint">보기를 눌러 정답을 골라 보세요</div>';
+    }
+    if (answered) {
+      var good = item.opts[dict.pick] === item.answerText;
+      h += '<div class="quiz-tip">' + (good ? '🎉 정답이에요! ' : '😊 정답은 "' + esc(item.answerText) + '"! ') +
+        esc(item.tip) + '</div>';
+      h += '<button class="btn primary big" data-action="quiz-next">' +
+        (dict.qi + 1 >= total ? '결과 보기 🎉' : '다음 문제 →') + '</button>';
+    }
+    h += '</div>';
+    return h;
+  }
+
+  function quizAnswer(i) {
+    if (dict.pick !== null) return;
+    var item = dict.quiz[dict.qi];
+    if (!item || i < 0 || i >= item.opts.length) return;
+    dict.pick = i;
+    var good = item.opts[i] === item.answerText;
+    dict.qresults[dict.qi] = { ok: good };
+    sound(good ? 'chime' : 'soft');
+    renderDictation();
+  }
+
+  function quizNext() {
+    if (dict.qi + 1 >= dict.quiz.length) {
+      dict.qfinished = true;
+      if (!dict.qrewarded) { dict.qrewarded = true; rewardRound('맞춤법 퀴즈'); return; }
+      renderDictation();
+      return;
+    }
+    dict.qi++;
+    dict.pick = null;
+    sound('pop');
+    renderDictation();
+  }
+
+  function rewardRound(label) {
+    addSticker(1);
+    save();
+    renderAll();
+    sound('fanfare');
+    confetti();
+    if (pendingNew.length) { flush(); }
+    else { toast('🎉 ' + label + ' 완료! 칭찬 스티커 +1 ⭐'); }
+  }
+
+  function openEdit() {
+    dict.editing = true;
+    renderDictation();
+    var ta = $('dictEditText');
+    if (ta) ta.value = (state.dictation.sentences || []).join('\n');
+    var sec = $('dictEdit');
+    if (sec && sec.scrollIntoView) { try { sec.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {} }
+  }
+
+  function saveSentences() {
+    var ta = $('dictEditText');
+    var lines = String(ta ? ta.value : '').split('\n');
+    var out = [];
+    for (var i = 0; i < lines.length; i++) {
+      var t = lines[i].trim();
+      if (t) out.push(t);
+    }
+    if (!out.length) { toast('문장을 한 개 이상 적어 주세요'); return; }
+    state.dictation.sentences = out.slice(0, 12);
+    save();
+    renderAll();
+    sound('chime');
+    toast('받아쓰기 문장을 저장했어요 📝');
+  }
+
+  function parsePaste(text) {
+    var lines = String(text || '').split('\n');
+    var out = [];
+    for (var i = 0; i < lines.length; i++) {
+      var raw = lines[i].trim();
+      if (!raw) continue;
+      if (raw.charAt(0) === '#') continue;
+      var parts = raw.split('|');
+      if (parts.length < 3) continue;
+      var prompt = parts[0].trim(), a = parts[1].trim(), b = parts[2].trim();
+      if (!prompt || !a || !b) continue;
+      if (prompt.indexOf('보기1') >= 0 || prompt.indexOf('정답번호') >= 0) continue;
+      var num = parseInt(parts[3], 10);
+      if (isNaN(num) || num < 1 || num > 2) num = 1;
+      var tip = (parts[4] || '').trim();
+      out.push({ prompt: prompt, opts: [a, b], answer: num - 1, tip: tip });
+    }
+    return out.slice(0, 30);
+  }
+
+  function applyPaste() {
+    var ta = $('dictPasteText');
+    var list = parsePaste(ta ? ta.value : '');
+    if (!list.length) { toast('형식에 맞는 줄이 없어요. 예시를 참고해 주세요!'); return; }
+    state.dictation.quizzes = list;
+    state.dictation.preset = 'custom';
+    state.dictation.studied = {};
+    dict.quiz = [];
+    dict.editing = false;
+    startQuiz();
+    save();
+    renderAll();
+    sound('chime');
+    toast('새 문제 ' + list.length + '개를 적용했어요 📋');
   }
 
   /* ---------------- 아침 알림 음성(MP3) ----------------
@@ -2474,6 +3076,30 @@ button{font:inherit;color:inherit;cursor:pointer}
     } else if (a === 'dex-filter') {
       dexFilter = el.getAttribute('data-filter') || 'all';
       renderDex();
+    } else if (a === 'dict-mode') {
+      swapDictMode(el.getAttribute('data-mode'));
+    } else if (a === 'dict-preset') {
+      applyPreset(el.getAttribute('data-preset'));
+    } else if (a === 'dict-study') {
+      toggleStudied(el.getAttribute('data-kind'), parseInt(el.getAttribute('data-i'), 10));
+    } else if (a === 'dict-edit') {
+      openEdit();
+    } else if (a === 'dict-cancel') {
+      dict.editing = false;
+      renderDictation();
+    } else if (a === 'dict-save') {
+      saveSentences();
+    } else if (a === 'dict-paste') {
+      applyPaste();
+    } else if (a === 'quiz-answer') {
+      quizAnswer(parseInt(el.getAttribute('data-opt'), 10));
+    } else if (a === 'quiz-next') {
+      quizNext();
+    } else if (a === 'quiz-restart') {
+      dict.quiz = [];
+      startQuiz();
+      sound('pop');
+      renderDictation();
     } else if (a === 'alarm-close') {
       hideAlarm();
     } else if (a === 'alarm-test') {
@@ -2562,7 +3188,14 @@ button{font:inherit;color:inherit;cursor:pointer}
     window.__ocean = { tick: tick, checkAlarms: checkAlarms, hideAlarm: hideAlarm, alarms: ALARMS, playSound: playSound, speak: speak, voice: function () { return voiceAudio; },
       pokemon: POKEMON, regular: REGULAR, special: SPECIAL, isKrHoliday: isKrHoliday, holidays: KR_HOLIDAYS,
       weekly: WEEKLY, hwStats: hwStats, weekItemDone: weekItemDone, satNeed: satNeed,
-      rollbackSpecial: rollbackSpecialUnlocks, rollbackMorning: rollbackMorningPoke };
+      rollbackSpecial: rollbackSpecialUnlocks, rollbackMorning: rollbackMorningPoke,
+      dictation: function () {
+        return { preset: state.dictation.preset, mode: dict.mode,
+          quizzes: (state.dictation.quizzes || []).length,
+          sentences: (state.dictation.sentences || []).length,
+          studied: Object.keys(state.dictation.studied || {}).length,
+          quiz: dict.quiz.length, qi: dict.qi, finished: dict.qfinished };
+      } };
   }
 
   init();
