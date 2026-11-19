@@ -2688,17 +2688,105 @@ button{font:inherit;color:inherit;cursor:pointer}
     return h + '</div>';
   }
 
+  /* ---------------- 음성(TTS) ----------------
+     안드로이드 크롬·삼성 인터넷은  cancel() 한 직후 같은 순간에 speak() 를 부르면
+     발화를 통째로 무시해 버려요. 그래서
+       1) 말하고 있는 중(speaking/pending)일 때만 cancel 하고,
+       2) cancel 했다면 잠깐(80ms) 기다렸다가 말해요.
+       3) utterance 는 변수에 붙잡아 둬야 안드로이드에서 중간에 끊기지 않아요(GC 방지).
+       4) 한국어 음성을 찾아 u.voice 로 콕 집어 주고, resume() 으로 멈춘 상태도 풀어 줘요. */
+
+  var koVoice = null;
+  var activeUtterance = null;
+  var speakTimer = null;
+  var lastCancelAt = 0;   /* 방금 cancel 했는지 — 그 직후의 speak 도 미뤄야 안드로이드에서 안 무시돼요 */
+
+  function pickKoVoice() {
+    try {
+      var syn = window.speechSynthesis;
+      if (!syn || typeof syn.getVoices !== 'function') return koVoice;
+      var voices = syn.getVoices() || [];
+      if (!voices.length) return koVoice;   /* 아직 목록이 안 왔으면 알던 것을 그대로 */
+      var i, v, lang;
+      for (i = 0; i < voices.length; i++) {
+        v = voices[i];
+        lang = String(v.lang || '').replace('_', '-').toLowerCase();
+        if (lang === 'ko-kr') { koVoice = v; return v; }
+      }
+      for (i = 0; i < voices.length; i++) {
+        v = voices[i];
+        lang = String(v.lang || '').replace('_', '-').toLowerCase();
+        if (lang.indexOf('ko') === 0) { koVoice = v; return v; }
+      }
+      koVoice = null;   /* 한국어 음성이 없으면 언어 코드로만 부탁해요 */
+    } catch (e) {}
+    return koVoice;
+  }
+
+  function initVoice() {
+    try {
+      var syn = window.speechSynthesis;
+      if (!syn) return;
+      pickKoVoice();
+      /* 음성 목록은 늦게 도착해요. 도착하면 다시 골라 둬요. */
+      if (typeof syn.addEventListener === 'function') {
+        syn.addEventListener('voiceschanged', pickKoVoice);
+      } else {
+        syn.onvoiceschanged = pickKoVoice;
+      }
+    } catch (e) {}
+  }
+
   function speak(text) {
     try {
-      if (!window.speechSynthesis || typeof SpeechSynthesisUtterance === 'undefined') return false;
+      var syn = window.speechSynthesis;
+      if (!syn || typeof syn.speak !== 'function' || typeof SpeechSynthesisUtterance === 'undefined') return false;
+
+      /* 앞서 예약해 둔 발화가 있으면 취소하고 이번 것만 말해요 */
+      if (speakTimer) { clearTimeout(speakTimer); speakTimer = null; }
+
       var u = new SpeechSynthesisUtterance(text);
       u.lang = 'ko-KR';
       u.rate = 0.85;
       u.pitch = 1.05;
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(u);
+      var v = koVoice || pickKoVoice();
+      if (v) {
+        u.voice = v;
+        if (String(v.lang || '').replace('_', '-').toLowerCase().indexOf('ko') === 0) u.lang = 'ko-KR';
+      }
+      u.onend = function () {
+        if (activeUtterance === u) activeUtterance = null;
+      };
+      u.onerror = function (ev) {
+        if (activeUtterance === u) activeUtterance = null;
+        var why = (ev && ev.error) ? String(ev.error) : '';
+        /* 우리가 새로 말하려고 끊은 경우(canceled/interrupted)는 안내하지 않아요 */
+        if (why === 'canceled' || why === 'interrupted') return;
+        toast('음성 재생이 안 되면 태블릿 설정에서 한국어 TTS 음성을 확인해 주세요');
+      };
+      activeUtterance = u;   /* GC 로 사라지지 않게 붙잡아 둬요 */
+
+      var busy = !!(syn.speaking || syn.pending);
+      var cooling = (Date.now() - lastCancelAt) < 200;
+      if (busy || cooling) {
+        if (busy) {
+          try { syn.cancel(); } catch (e) {}
+          lastCancelAt = Date.now();
+        }
+        speakTimer = setTimeout(function () {
+          speakTimer = null;
+          lastCancelAt = 0;
+          try {
+            syn.resume();        /* cancel 뒤 멈춰 버린 상태를 풀어요 */
+            syn.speak(u);
+          } catch (e2) { if (activeUtterance === u) activeUtterance = null; }
+        }, 80);
+      } else {
+        try { syn.resume(); } catch (e) {}
+        syn.speak(u);
+      }
       return true;
-    } catch (e) { return false; }
+    } catch (e) { activeUtterance = null; return false; }
   }
 
   function dictSpeak() {
@@ -3203,6 +3291,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     pendingNew = [];
     save();
     renderSettings();
+    initVoice();
     renderAll();
     bind();
     tick();
@@ -3211,7 +3300,7 @@ button{font:inherit;color:inherit;cursor:pointer}
       if (document.hidden === false) tick();   /* 탭이 다시 보이면 놓친 알림을 바로 확인 */
     });
     /* 테스트·디버그용 손잡이 (알림 로직을 시계를 기다리지 않고 확인할 때) */
-    window.__ocean = { tick: tick, checkAlarms: checkAlarms, hideAlarm: hideAlarm, alarms: ALARMS, playSound: playSound,
+    window.__ocean = { tick: tick, checkAlarms: checkAlarms, hideAlarm: hideAlarm, alarms: ALARMS, playSound: playSound, speak: speak,
       pokemon: POKEMON, regular: REGULAR, special: SPECIAL, isKrHoliday: isKrHoliday, holidays: KR_HOLIDAYS,
       weekly: WEEKLY, hwStats: hwStats, weekItemDone: weekItemDone, satNeed: satNeed,
       rollbackSpecial: rollbackSpecialUnlocks, rollbackMorning: rollbackMorningPoke };
