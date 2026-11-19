@@ -1,5 +1,5 @@
 /* 오션이의 하루 — 오프라인에서도 열리도록 앱 껍데기만 담아 둬요. */
-var CACHE = 'ocean-hari-v1';
+var CACHE = 'ocean-hari-v2';
 var SHELL = ['./', 'index.html', 'manifest.json', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png'];
 
 self.addEventListener('install', function (e) {
