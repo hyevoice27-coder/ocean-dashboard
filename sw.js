@@ -1,6 +1,6 @@
 /* 오션이의 하루 — 오프라인에서도 열리도록 앱 껍데기와 알림 음성을 담아 둬요. */
-var CACHE = 'ocean-hari-v4';
-var SHELL = ['./', 'index.html', 'manifest.json', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png',
+var CACHE = 'ocean-hari-v5';
+var SHELL = ['./', 'index.html', 'features.js', 'manifest.json', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png',
   'audio/alarm-0800.mp3', 'audio/alarm-0815.mp3'];
 
 self.addEventListener('install', function (e) {
@@ -57,3 +57,4 @@ self.addEventListener('fetch', function (e) {
     })
   );
 });
+
